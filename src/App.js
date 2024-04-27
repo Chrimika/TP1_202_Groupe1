@@ -6,20 +6,24 @@ function resoudreEquation() {
     if (isNaN(a) || isNaN(b) || isNaN(c)) {
         document.getElementById('resultat').textContent = 'Les coefficients doivent être des nombres réels.';
     } else {
-        const resultat = resoudreEquationQuadratique(a, b, c);
-        let message = '';
-        const vitesse = resultat.vitesse;
-        console.log(vitesse);
-        localStorage.setItem('vitesse', vitesse);
-        if (resultat.discriminantPositif) {
-            message = 'Solutions réelles : ' + resultat.solutions.join(' ; ')+'   Viteese = '+resultat.vitesse;
-            window.location.href = "dino.html";
-        } else {
-            message = 'Solutions complexes : '+resultat.solutions.join(' ; ')+'   Viteese = '+resultat.vitesse;
-            window.location.href = "ptero.html";
+        if(a==0){
+            document.getElementById('resultat').textContent = 'Votre équation n\'est pas de second degé.';
         }
-        document.getElementById('resultat').textContent = message;
-        
+        else{
+            const resultat = resoudreEquationQuadratique(a, b, c);
+            let message = '';
+            const vitesse = resultat.vitesse;
+            console.log(vitesse);
+            localStorage.setItem('vitesse', vitesse);
+            if (resultat.discriminantPositif) {
+                message = 'Solutions réelles : ' + resultat.solutions.join(' ; ')+'   Viteese = '+resultat.vitesse;
+                window.location.href = "dino.html";
+            } else {
+                message = 'Solutions complexes : '+resultat.solutions.join(' ; ')+'   Viteese = '+resultat.vitesse;
+                window.location.href = "ptero.html";
+            }
+            document.getElementById('resultat').textContent = message;
+        }
     }
 }
 
