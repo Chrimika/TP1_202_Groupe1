@@ -60,7 +60,7 @@ function resoudreEquationQuadratique(a, b, c) {
 var elem = document.getElementById("telem");
 var position = 0;
 var vitesse = localStorage.getItem('vitesse');
-alert(localStorage.getItem('vitesse'));
+
 moveElement();
 
 function moveElement() {
