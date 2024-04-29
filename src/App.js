@@ -69,10 +69,12 @@ var position = 0;
 var vitesse = localStorage.getItem('vitesse');
 
 
+
+moveElement();
+
 function moveElement() {
   position += parseInt(vitesse)*0.5;
   elem.style.left = position + "px";
   requestAnimationFrame(moveElement);
 }
 
-moveElement();
