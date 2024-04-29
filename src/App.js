@@ -9,25 +9,26 @@ function resoudreEquation() {
   } else {
     const resultat = resoudreEquationQuadratique(a, b, c);
     let message = "";
+    let speed = "";
+    var x1 = "";
+    var x2 = "";
     const vitesse = resultat.vitesse;
     console.log(vitesse);
     localStorage.setItem("vitesse", vitesse);
     if (resultat.discriminantPositif) {
-      message =
-        "Solutions réelles : " +
-        resultat.solutions.join(" ; ") +
-        "   Viteese = " +
-        resultat.vitesse;
+      speed = resultat.vitesse;
+      x1 = resultat.solutions[0];
+      x2 = resultat.solutions[1];
       window.location.href = "dino.html";
     } else {
-      message =
-        "Solutions complexes : " +
-        resultat.solutions.join(" ; ") +
-        "   Viteese = " +
-        resultat.vitesse;
+      speed = resultat.vitesse;
+      x1 = resultat.solutions[0];
+      x2 = resultat.solutions[1];
       window.location.href = "ptero.html";
     }
-    document.getElementById("resultat").textContent = message;
+    document.getElementById("vitesse").textContent = speed;
+    document.getElementById("x1").textContent = x1;
+    document.getElementById("x2").textContent = x2;
   }
 }
 
