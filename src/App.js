@@ -66,9 +66,7 @@ function resoudreEquationQuadratique(a, b, c) {
 /*parcours du dino*/
 var elem = document.getElementById("telem");
 var position = 0;
-var vitesse = localStorage.getItem('vitesse');
-
-
+var vitesse = localStorage.getItem("vitesse");
 
 moveElement();
 
@@ -77,4 +75,3 @@ function moveElement() {
   elem.style.left = position + "px";
   requestAnimationFrame(moveElement);
 }
-
