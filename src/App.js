@@ -71,7 +71,15 @@ var vitesse = localStorage.getItem('vitesse');
 moveElement();
 
 function moveElement() {
-  position += vitesse;
+  position += parseInt(vitesse);
   elem.style.left = position + "px";
   requestAnimationFrame(moveElement);
 }
+
+
+/*parcours du ptero*/
+var vitessePtera = parseInt(vitesse)*3;
+var pelem = document.getElementById("elem");
+var Duration = vitessePtera+'s';
+console.log(Duration);
+pelem.style.animationDuration = Duration;
