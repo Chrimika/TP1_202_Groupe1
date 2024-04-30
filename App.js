@@ -29,9 +29,8 @@ function resoudreEquation() {
       x2 = resultat.solutions[1];
       window.location.href = "pages/ptero.html";
     }
-    document.getElementById("vitesse").textContent = speed;
-    document.getElementById("x1").textContent = x1;
-    document.getElementById("x2").textContent = x2;
+    localStorage.setItem("val1", toString(x1));
+    localStorage.setItem("val2", toString(x2));
   }
   }
 }
