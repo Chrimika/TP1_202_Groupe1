@@ -7,6 +7,9 @@ function resoudreEquation() {
     document.getElementById("resultat").textContent =
       "Les coefficients doivent être des nombres réels.";
   } else {
+    if(a==0){
+      document.getElementById('vitesse').textContent = 'Votre équation n\'est pas de second degé.';
+  }else{
     const resultat = resoudreEquationQuadratique(a, b, c);
     let message = "";
     let speed = "";
@@ -28,7 +31,8 @@ function resoudreEquation() {
     }
     document.getElementById("vitesse").textContent = speed;
     document.getElementById("x1").textContent = x1;
-    document.getElementById("x2").textContent = x2;``
+    document.getElementById("x2").textContent = x2;
+  }
   }
 }
 
