@@ -3,7 +3,7 @@ var debutJour = new Date();
 var debutNuit = new Date();
 
 debutJour.setHours(6, 0, 0);
-debutNuit.setHours(19, 0, 0);
+debutNuit.setHours(18, 0, 0);
 
 if (heureActuelle >= debutJour && heureActuelle < debutNuit) {
   changerMode(true);
@@ -22,8 +22,8 @@ function applyCss(codeCss, mode) {
 
 function changerMode(jour) {
   if (jour === true) {
-    applyCss("*{background:white; color:black;}", "il fait jour");
+    applyCss("body{background-image:url('img/body_bg.png');background-size: contain;background-repeat: no-repeat;background-position: center; color:black;}", "il fait jour");
   } else {
-    applyCss("*{background:black; color:white;}", "il fait nuit");
+    applyCss("body{background-image:url('img/body_bg_night.png');background-size: contain;background-repeat: no-repeat;background-position: center; color:white;} *{background-color: #151616} .core{background-color: #151616} ", "il fait nuit");
   }
 }
