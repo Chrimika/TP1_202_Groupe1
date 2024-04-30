@@ -44,6 +44,19 @@
       </p>
     </div>
     <script src="App.js"></script>
+    <script>
+      var pelem = document.getElementById("elem");
+      var vitessePtera = Math.ceil((parseFloat(vitesse)))*3;
+      var Duration = vitessePtera+'s';
+      console.log(Duration);
+      pelem.style.animationDuration = Duration;
+
+      const delaiEnMillisecondes = 6000;
+      const nouvellePageURL = "index.html";
+      setTimeout(function() {
+          window.location.href = nouvellePageURL;
+      }, delaiEnMillisecondes);
+    </script>
     <script src="jsFilePtero.js"></script>
   </body>
 </html>

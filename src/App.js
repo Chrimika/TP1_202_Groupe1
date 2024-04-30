@@ -28,7 +28,7 @@ function resoudreEquation() {
     }
     document.getElementById("vitesse").textContent = speed;
     document.getElementById("x1").textContent = x1;
-    document.getElementById("x2").textContent = x2;
+    document.getElementById("x2").textContent = x2;``
   }
 }
 
@@ -79,8 +79,3 @@ function moveElement() {
 
 
 /*parcours du ptero*/
-var vitessePtera = parseInt(vitesse)*3;
-var pelem = document.getElementById("elem");
-var Duration = vitessePtera+'s';
-console.log(Duration);
-pelem.style.animationDuration = Duration;
