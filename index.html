@@ -135,6 +135,10 @@
       height: 15px;
       color: #777;
     }
+    input[type="number"] {
+    -moz-appearance: textfield; /* Pour Firefox */
+    appearance: textfield; /* Pour la plupart des autres navigateurs */
+}
     </style>
 </head>
 <body>
@@ -151,17 +155,17 @@
       <form id="equationForm">
         <div class="core_align">
           <div class="div1">
-            <input type="text" id="a" required />
+            <input type="number" id="a" required />
             <label for="a">X<sup>2</sup></label>
           </div>
           <p>+</p>
           <div class="div1">
-            <input type="text" id="b" required />
+            <input type="number" id="b" required />
             <label for="b">X</label>
           </div>
           <p>+</p>
           <div class="div1">
-            <input type="text" id="c" required />
+            <input type="number" id="c" required />
             <label for="c"> = 0</label>
           </div>
           <div class="div1">
