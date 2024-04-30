@@ -1,26 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title>
+    <style>
+      body{
+        margin: 0;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      h1{
+        font-size: 80px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        color: #141D26;
+      }
+      .sub_topic{
+        text-align: center;
+        letter-spacing: 4px;
+        margin-top: -55px;
+        border-bottom: 1px solid #C51F5D;
+      }
+      i{
+        color: #C51F5D;
+
+      }
+      .core{
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 3px;
+        width: 400px;
+        margin-top: 30px;
+      }
+      form{
+        margin-top: 20px;
+        text-align: center;
+      }
+      input{
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border: none;
+        background-color: #C0C0C0;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
+      .core_align{
+        display: flex;
+        padding: 5px;
+        justify-content: center;
+        align-items: center;
+      }
+      .div1{
+        margin: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      label{
+        font-size: 30px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      button{
+        border-radius: 4px;
+        width: 100px;
+        background-color: #08415C;
+        height: 35px;
+        border: none;
+        margin-top: 25px;
+        color: white;
+        letter-spacing: 4px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+      }
+      .results{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 30px;
+        
+      }
+      .res_style{
+        background-color: #08415C;
+        color: white;
+        padding: 10px;
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+      #x1, #vitesse, #x2{
+        width: 75%;
+        height: 30px;
+        border: 1px solid black;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        font-size: 25px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .in{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin:0 25px;
+      }
+    </style>
+</head>
+<body>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Résolution d'une équation quadratique</title>
   </head>
   <body>
-    <h1>Résolution d'une équation quadratique</h1>
-    <form id="equationForm">
-      <label for="a">a :</label>
-      <input type="text" id="a" required /><br />
+    <h1>GROUPE 1</h1>
+    <p class="sub_topic"> <i>Résolution d'une équation de 2nd Degré</i> </p>
 
-      <label for="b">b :</label>
-      <input type="text" id="b" required /><br />
+    <div class="core">
+      <form id="equationForm">
+        <div class="core_align">
+          <div class="div1">
+            <input type="text" id="a" required />
+            <label for="a">X<sup>2</sup></label>
+          </div>
+          <p>+</p>
+          <div class="div1">
+            <input type="text" id="b" required />
+            <label for="b">X</label>
+          </div>
+          <p>+</p>
+          <div class="div1">
+            <input type="text" id="c" required />
+            <label for="c"> = 0</label>
+          </div>
+          <div class="div1">
+            <p></p>
+          </div>
+        </div>
 
-      <label for="c">c :</label>
-      <input type="text" id="c" required /><br />
+        <button type="button" onclick="resoudreEquation()">Calculer</button>
+      </form>
+    </div>
+    <div class="results">
+      <div class="in">
+        <p class="res_style">X1</p>
+        <p id="x1"></p>
+      </div>
+      
+      <div class="in">
+        <p class="res_style">VITESSE</p>
+        <p id="vitesse"></p>
+      </div>
 
-      <button type="button" onclick="resoudreEquation()">Calculer</button>
-    </form>
+      <div class="in">
+        <p class="res_style">X2</p>
+        <p id="x2"></p>
+      </div>
 
-    <p id="resultat"></p>
+    </div>
+
+    
 
     <script src="App.js"></script>
     <script src="jsFile.js"></script>

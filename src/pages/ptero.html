@@ -15,7 +15,7 @@
         overflow-x: hidden;
         display: flex;
         justify-content: center;
-        background-image: url("img/forest.png");
+        background-image: url("../img/forest.png");
       }
       #elem {
         position: absolute;
@@ -37,13 +37,26 @@
       <p id="elem">
         <img
           id="animated-gif"
-          src="img/pterodactyle.gif"
+          src="../img/pterodactyle.gif"
           alt=""
           width="300px"
         />
       </p>
     </div>
-    <script src="App.js"></script>
-    <script src="jsFilePtero.js"></script>
+    <script src="../App.js"></script>
+    <script>
+      var pelem = document.getElementById("elem");
+      var vitessePtera = Math.ceil((parseFloat(vitesse)))*3;
+      var Duration = vitessePtera+'s';
+      console.log(Duration);
+      pelem.style.animationDuration = Duration;
+
+      const delaiEnMillisecondes = 6000;
+      const nouvellePageURL = "../index.html";
+      setTimeout(function() {
+          window.location.href = nouvellePageURL;
+      }, delaiEnMillisecondes);
+    </script>
+    <script src="../jsFilePtero.js"></script>
   </body>
 </html>

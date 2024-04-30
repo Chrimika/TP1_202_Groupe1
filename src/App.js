@@ -9,25 +9,26 @@ function resoudreEquation() {
   } else {
     const resultat = resoudreEquationQuadratique(a, b, c);
     let message = "";
+    let speed = "";
+    var x1 = "";
+    var x2 = "";
     const vitesse = resultat.vitesse;
     console.log(vitesse);
     localStorage.setItem("vitesse", vitesse);
     if (resultat.discriminantPositif) {
-      message =
-        "Solutions réelles : " +
-        resultat.solutions.join(" ; ") +
-        "   Viteese = " +
-        resultat.vitesse;
-      window.location.href = "dino.html";
+      speed = resultat.vitesse;
+      x1 = resultat.solutions[0];
+      x2 = resultat.solutions[1];
+      window.location.href = "pages/dino.html";
     } else {
-      message =
-        "Solutions complexes : " +
-        resultat.solutions.join(" ; ") +
-        "   Viteese = " +
-        resultat.vitesse;
-      window.location.href = "ptero.html";
+      speed = resultat.vitesse;
+      x1 = resultat.solutions[0];
+      x2 = resultat.solutions[1];
+      window.location.href = "pages/ptero.html";
     }
-    document.getElementById("resultat").textContent = message;
+    document.getElementById("vitesse").textContent = speed;
+    document.getElementById("x1").textContent = x1;
+    document.getElementById("x2").textContent = x2;``
   }
 }
 
@@ -78,8 +79,3 @@ function moveElement() {
 
 
 /*parcours du ptero*/
-var vitessePtera = parseInt(vitesse)*3;
-var pelem = document.getElementById("elem");
-var Duration = vitessePtera+'s';
-console.log(Duration);
-pelem.style.animationDuration = Duration;
