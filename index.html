@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <title>Acceuil</title>
     <style>
       body{
@@ -18,6 +19,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-align: center;
         color: #141D26;
+        margin-top: -15px;
       }
       .sub_topic{
         text-align: center;
@@ -117,15 +119,27 @@
         align-items: center;
         margin:0 25px;
       }
+      .info{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      width: 100%;
+      margin-right: 30px;
+    }
+    .weather-image{
+      margin-left: 12px;
+      height: 15px;
+      color: #777;
+    }
     </style>
 </head>
 <body>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Résolution d'une équation quadratique</title>
-  </head>
-  <body>
+    <div class="info">
+      <p id="temperature" class="weather-image"></p>
+      <p class="weather-image" id="weather-image"></p>
+      <p id="latitude" style="display: none; visibility: hidden;"></p>
+      <p id="longitude" style="display: none; visibility: hidden;"></p>
+    </div>
     <h1>GROUPE 1</h1>
     <p class="sub_topic"> <i>Résolution d'une équation de 2nd Degré</i> </p>
 
@@ -180,6 +194,87 @@
       document.getElementById("vitesse").textContent = localStorage.getItem("vitesse");
       document.getElementById("x1").textContent = localStorage.getItem("val1");
       document.getElementById("x2").textContent = localStorage.getItem("val2");
+
+
+
+      function getCoordinates() {
+      return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              resolve({ latitude, longitude });
+            },
+            (error) => {
+              reject(error);
+            }
+          );
+        } else {
+          reject(new Error("La géolocalisation n'est pas supportée par votre navigateur."));
+        }
+      });
+    }
+
+    function getTemperature(latitude, longitude) {
+      const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`;
+
+      return fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.current && data.current.temperature_2m) {
+            const temperature = data.current.temperature_2m;
+            return temperature;
+          } else {
+            throw new Error("Impossible de récupérer la température.");
+          }
+        });
+    }
+    
+    function getWeatherIconCode(temperature) {
+      if (temperature >= 20) {
+        // Température élevée (soleil)
+        return "wi wi-day-sunny";
+      } else {
+        // Température basse (pluie)
+        return "wi wi-rain";
+      }
+    }
+
+    function updateWeatherDisplay(temperature) {
+      const weatherElement = document.getElementById('weather');
+      const weatherImageElement = document.getElementById('weather-image');
+      const downloadLinkElement = document.getElementById('download-link');
+      
+      const weatherIconCode = getWeatherIconCode(temperature);
+      weatherImageElement.className = "weather-image " + weatherIconCode;
+      weatherImageElement.style.width = "15px";
+      weatherImageElement.style.height = "15px";
+      downloadLinkElement.href = "https://weathericons.org/icons/" + weatherIconCode.split(" ")[1] + ".svg";
+      
+      downloadLinkElement.style.display = "block";
+    }
+
+    function getCurrentTemperature() {
+      getCoordinates()
+        .then(({ latitude, longitude }) => getTemperature(latitude, longitude))
+        .then(temperature => {
+          const latitudeElement = document.getElementById('latitude');
+          const longitudeElement = document.getElementById('longitude');
+          const temperatureElement = document.getElementById('temperature');
+
+          // latitudeElement.textContent = "Latitude : " + latitude;
+          // longitudeElement.textContent = "Longitude : " + longitude;
+          temperatureElement.textContent = "Température actuelle : " + temperature + "°C";
+
+          updateWeatherDisplay(temperature);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+
+    getCurrentTemperature();
     </script>
   </body>
 </html>
