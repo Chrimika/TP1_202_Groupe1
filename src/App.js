@@ -19,12 +19,12 @@ function resoudreEquation() {
       speed = resultat.vitesse;
       x1 = resultat.solutions[0];
       x2 = resultat.solutions[1];
-      window.location.href = "dino.html";
+      window.location.href = "pages/dino.html";
     } else {
       speed = resultat.vitesse;
       x1 = resultat.solutions[0];
       x2 = resultat.solutions[1];
-      window.location.href = "ptero.html";
+      window.location.href = "pages/ptero.html";
     }
     document.getElementById("vitesse").textContent = speed;
     document.getElementById("x1").textContent = x1;
