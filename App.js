@@ -6,9 +6,13 @@ function resoudreEquation() {
   if (isNaN(a) || isNaN(b) || isNaN(c)) {
     document.getElementById("vitesse").textContent =
       "Les coefficients doivent être des nombres réels.";
+      document.getElementById("x1").textContent = "";
+      document.getElementById("x2").textContent = "";
   } else {
     if(a==0){
       document.getElementById('vitesse').textContent = 'Votre équation n\'est pas de second degé.';
+      document.getElementById("x1").textContent = "";
+      document.getElementById("x2").textContent = "";
   }else{
     const resultat = resoudreEquationQuadratique(a, b, c);
     let message = "";
@@ -20,7 +24,7 @@ function resoudreEquation() {
     localStorage.setItem("vitesse", vitesse);
     localStorage.setItem("val1", resultat.solutions[0])
     localStorage.setItem("val2", resultat.solutions[1])
-    
+
     if (resultat.discriminantPositif) {
       speed = resultat.vitesse;
       x1 = resultat.solutions[0];
