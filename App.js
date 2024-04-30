@@ -4,7 +4,7 @@ function resoudreEquation() {
   const c = parseFloat(document.getElementById("c").value);
 
   if (isNaN(a) || isNaN(b) || isNaN(c)) {
-    document.getElementById("resultat").textContent =
+    document.getElementById("vitesse").textContent =
       "Les coefficients doivent être des nombres réels.";
   } else {
     if(a==0){
