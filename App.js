@@ -18,6 +18,9 @@ function resoudreEquation() {
     const vitesse = resultat.vitesse;
     console.log(vitesse);
     localStorage.setItem("vitesse", vitesse);
+    localStorage.setItem("val1", resultat.solutions[0])
+    localStorage.setItem("val2", resultat.solutions[1])
+    
     if (resultat.discriminantPositif) {
       speed = resultat.vitesse;
       x1 = resultat.solutions[0];
@@ -29,8 +32,6 @@ function resoudreEquation() {
       x2 = resultat.solutions[1];
       window.location.href = "pages/ptero.html";
     }
-    localStorage.setItem("val1", x1.toString());
-    localStorage.setItem("val2", x2,toString());
   }
   }
 }
