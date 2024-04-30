@@ -29,8 +29,8 @@ function resoudreEquation() {
       x2 = resultat.solutions[1];
       window.location.href = "pages/ptero.html";
     }
-    localStorage.setItem("val1", toString(x1));
-    localStorage.setItem("val2", toString(x2));
+    localStorage.setItem("val1", x1);
+    localStorage.setItem("val2", x2);
   }
   }
 }
